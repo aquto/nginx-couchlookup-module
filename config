@@ -1,0 +1,19 @@
+ngx_addon_name=ngx_http_couchlookup_module
+ngx_module_libs="-lcouchbase"
+
+SRC="$ngx_addon_dir/ngx_http_couchlookup_module.c \
+     $ngx_addon_dir/ngx_http_hashtb.c \
+     $ngx_addon_dir/ngx_http_libcouch_wrapper.c \
+     $ngx_addon_dir/lib/jsmn.c \
+"
+
+if test -n "$ngx_module_link"; then
+    ngx_module_type=HTTP
+    ngx_module_name=ngx_http_couchlookup_module
+    ngx_module_srcs=$SRC
+
+    . auto/module
+else
+    HTTP_MODULES="$HTTP_MODULES ngx_http_couchlookup_module"
+    NGX_ADDON_SRCS="$NGX_ADDON_SRCS $SRC"
+fi
