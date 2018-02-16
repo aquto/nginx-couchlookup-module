@@ -6,7 +6,15 @@ Nginx module to lookup Couchbase documents and register their top-level JSON key
 Build steps
 -----------
 
-TODO
+Add as a static module:
+
+```
+cd <path to nginx sources>
+./configure (...) --add-module=/path/to/nginx-couchlookup-module
+make
+```
+
+As a dynamic module: [see official documentation](https://www.nginx.com/resources/wiki/extending/converting/).
 
 Example usage
 -------------
