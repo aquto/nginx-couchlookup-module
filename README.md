@@ -26,6 +26,7 @@ As a dynamic module: [see official documentation](https://www.nginx.com/resource
 * `cd nginx-1.12.1`
 * `./configure --add-dynamic-module=../nginx-couchlookup-module --with-pcre=../pcre-8.41`
 * `make`
+* In Nginx conf: `load_module ngx_http_couchlookup_module.so;`
 
 When updating the module, run the following:
 
