@@ -16,6 +16,23 @@ make
 
 As a dynamic module: [see official documentation](https://www.nginx.com/resources/wiki/extending/converting/).
 
+### Build locally (development) - OSX
+
+**This is how to install Nginx 1.12.1 with PCRE 8.41 on OSX for development purposes:**
+
+* Module dependency: `brew install libcouchbase`
+* `wget https://ftp.pcre.org/pub/pcre/pcre-8.41.tar.gz && tar -xvf pcre-8.41.tar.gz`
+* `wget http://nginx.org/download/nginx-1.12.1.tar.gz && tar -xvf nginx-1.12.1.tar.gz`
+* `cd nginx-1.12.1`
+* `./configure --add-dynamic-module=../nginx-couchlookup-module --with-pcre=../pcre-8.41`
+* `make`
+
+When updating the module, run the following:
+
+* (Re)build module: `make modules` (from `nginx-1.12.1` directory)
+* Copy dynamic library: `cp objs/ngx_http_couchlookup_module.so /usr/local/nginx`
+* Start locally-built Nginx: `./objs/nginx -g "daemon off;"`
+
 Example usage
 -------------
 

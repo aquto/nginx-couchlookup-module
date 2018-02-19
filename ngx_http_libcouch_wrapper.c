@@ -70,7 +70,9 @@ lcw_get_result_s *lcw_get(ngx_pool_t *pool, lcb_t instance, ngx_str_t *couch_key
     get_res->data = NULL;
     get_res->pool = pool;
 
-    lcb_CMDGET gcmd = { 0 };
+    lcb_CMDGET gcmd;
+    ngx_memzero(&gcmd, sizeof (gcmd));
+
     LCB_CMD_SET_KEY(&gcmd, couch_key->data, couch_key->len);
     lcb_get3(instance, get_res, &gcmd);
     lcb_wait(instance);

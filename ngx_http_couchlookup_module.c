@@ -177,7 +177,9 @@ static char *ngx_http_couchlookup_creds(ngx_conf_t *cf, ngx_command_t *cmd, void
         goto failure;
     }
 
-    lcw_creds_s creds = { 0 };
+    lcw_creds_s creds;
+    ngx_memzero(&creds, sizeof (creds));
+
     SET_FIRST_CREDS_TOK(creds.host, buf);
     SET_NEXT_CREDS_TOK(creds.bucket);
     SET_NEXT_CREDS_TOK(creds.username);
